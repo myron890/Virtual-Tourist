@@ -50,6 +50,8 @@ extension TravelLocationsMapViewController {
 extension TravelLocationsMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let photoAlbumVC = PhotoAlbumViewController()
+        photoAlbumVC.addAnnotationToMap(view.annotation as! MKPointAnnotation)
         performSegue(withIdentifier: "showPhotoAlbumVC", sender: nil)
     }
     
