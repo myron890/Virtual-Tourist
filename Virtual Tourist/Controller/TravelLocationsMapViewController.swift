@@ -18,8 +18,8 @@ class TravelLocationsMapViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        //Allow mapView to respond to user long taps to add a pin
-        setupGestureRecognizerForMapView()
+        mapView.delegate = self
+        setupGestureRecognizerForMapView() //Allow mapView to respond to user long taps to add a pin
 
     }
 }
@@ -42,6 +42,15 @@ extension TravelLocationsMapViewController {
         let annotation = MKPointAnnotation()
         annotation.coordinate = coordinate
         mapView.addAnnotation(annotation)
+    }
+    
+}
+
+    //Add functionality to Segue when user selects a pin
+extension TravelLocationsMapViewController: MKMapViewDelegate {
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        performSegue(withIdentifier: "showPhotoAlbumVC", sender: nil)
     }
     
 }
